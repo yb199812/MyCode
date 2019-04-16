@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.yxin.dao.Userdao">
+    <resultMap type="cn.yxin.domain.User" id="userMap">
+        <result property="id" column="id"/>
+        <result property="passworld" column="passworld"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+        <result property="home" column="home"/>
+        <result property="creattime" column="creattime"/>
+    </resultMap>
+   <select id="Findall"  resultType="cn.yxin.domain.User" resultMap="userMap">
+	   SELECT u.id,u.passworld,u.name,u.phone,u.home,u.creattime from USER u
+	</select>
+    <insert id="saveUser"   parameterType="cn.yxin.domain.User">
+        INSERT INTO USER (id,passworld,name,phone,home,creattime)VALUES (#{id},#{passworld},#{name},#{phone},#{home},sysdate())
+    </insert>
+
+</mapper>
+
